@@ -1,39 +1,39 @@
 # 文档说明
 
-本项目面向个人和小团队，文档只有三类，每类只做一件事，信息只有一个权威来源。本文件是文档规则的权威来源。
+本文档体系面向个人和小团队，文档只有三类，每类只做一件事，信息只有一个权威来源。本文件是文档规则的权威来源。
 
 ```
 docs/
-├── README.md              # 本文件
-├── review.md              # 各类文档的目标、范围、越界示例
-├── prd.template.md        # PRD 模板
-├── design.template.md     # 设计模板
-├── prd.md                 # PRD
-├── design.md              # 设计
-├── design-<模块>.md       # 模块设计（可选）
+├── README.md                   # 本文件
+├── review.md                   # 各类文档的目标、范围、越界示例
+├── prd.template.md             # PRD 模板
+├── design.template.md          # 设计模板
+├── prd.md                      # PRD
+├── design.md                   # 设计
+├── design-<模块>.md            # 模块设计（可选）
 └── adr/
-    ├── 0000-template.md   # ADR 模板
-    └── NNNN-<slug>.md     # ADR
+    ├── 0000-template.md        # ADR 模板
+    └── NNNN-<english-slug>.md  # ADR
 ```
 
 ## 三类文档
 
 - **PRD**：做什么、为谁做、什么场景、不做什么。
 - **设计**：当前系统的中高层设计，随项目演进更新。
-- **ADR**：一个决策一份文件，只描述当前决策及备选方案。
+- **ADR**：一个决策一份文件，记录当前决策、依据、备选方案和影响。
 
 ## 引用规则
 
 - PRD 不引用其他文档。
-- ADR 可引用 PRD 需求，不引用设计和其他 ADR。唯一例外：废弃的 ADR 在 `status` 中注明取代它的 ADR。
+- ADR 可引用 PRD 需求，不引用设计和其他 ADR。唯一例外：废弃的 ADR 在 `status` 中注明取代它的 ADR，写编号即可，不用链接。
 - 设计可引用 PRD 需求和生效的 ADR。`design.md` 可引用模块设计，模块设计不引用 `design.md`，模块设计之间也不互相引用。
 - 引用时用链接，不复述被引用文档的内容。
 
 ## 修改规则
 
 - PRD、设计：直接修改，历史由 git 记录，文档中不写演进过程。
-- ADR：提议状态可自由修改。生效后决策不变，只允许修改 `status`、错别字、与事实不符的笔误，以及 review 发现的越界内容。决策变化时新建 ADR，旧 ADR 改为废弃。
-- 废弃的 ADR 保留文件，只修改 `status`。
+- ADR：提议状态可自由修改。生效后决策不变，只允许修改 `status`、错别字、与事实不符的笔误、失效的需求链接（依据仍成立时改为新编号），以及 review 发现的越界内容。决策变化时新建 ADR，旧 ADR 改为废弃。
+- 废弃的 ADR 保留文件，只修改 `status`；其中失效的需求链接保持不动。
 
 ## 需求编号
 
@@ -64,10 +64,10 @@ docs/
 
 ## 如何新建
 
-- PRD：复制 `prd.template.md` 为 `docs/prd.md`
-- 设计：复制 `design.template.md` 为 `docs/design.md`
-- 模块设计：设计文档过大时，复制 `design.template.md` 为 `docs/design-<模块>.md`；`design.md` 只保留总体与模块间协作，并链接各模块设计
-- ADR：复制 `adr/0000-template.md` 为 `docs/adr/NNNN-<english-slug>.md`
+- PRD：复制 `prd.template.md` 为 `prd.md`
+- 设计：复制 `design.template.md` 为 `design.md`
+- 模块设计：设计文档过大时，复制 `design.template.md` 为 `design-<模块>.md`；`design.md` 只保留总体与模块间协作，并链接各模块设计
+- ADR：复制 `adr/0000-template.md` 为 `adr/NNNN-<english-slug>.md`
 
 ## Review
 
